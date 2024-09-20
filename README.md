@@ -2,16 +2,16 @@
 
 ### 1. [Task Management](./taskapp_management)
 
-### 2. User Authentication
+### 2. [User Authentication](./User_Authentication)
 
-### 3. Blog Platform
+### 3. [Blog Platform](./Blog_Plataform)
  
-### 4. RESTful API
+### 4. [RESTful API](./REST_full_API)
 
-### 5. Custom Middleware
+### 5. [Custom Middleware](./Custom_Middleware)
 
-### 6. Multi-Tenant System
+### 6. [Multi-Tenant System](./Multi-Teneant_System)
 
-### 7. Caching for a High-Traffic Page
+### 7. [Caching for a High-Traffic Page](./Caching_High-Traffic_Page)
 
-### 8. Custom Django Management Command
+### 8. [Custom Django Management Command](./Custom_Django_Management_Command)
