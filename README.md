@@ -10,7 +10,7 @@
 
 ### 5. [Custom Middleware](./Custom_Middleware)
 
-### 6. [Multi-Tenant System](./Multi-Teneant_System)
+### 6. [Multi-Tenant System](./Multi-Tenant_System)
 
 ### 7. [Caching for a High-Traffic Page](./Caching_High-Traffic_Page)
 
