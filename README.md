@@ -1,17 +1,17 @@
 # djangoPractice
 
-## 1. Task Management
+### 1. Task Management
 
-## 1. User Authentication
+### 2. User Authentication
 
-## 1. Blog Platform
+### 3. Blog Platform
  
-## 1. RESTful API
+### 4. RESTful API
 
-## 1. Custom Middleware
+### 5. Custom Middleware
 
-## 1. Multi-Tenant System
+### 6. Multi-Tenant System
 
-## 1. Caching for a High-Traffic Page
+### 7. Caching for a High-Traffic Page
 
-## 1. Custom Django Management Command
+### 8. Custom Django Management Command
