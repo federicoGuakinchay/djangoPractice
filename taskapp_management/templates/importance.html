@@ -1,0 +1,23 @@
+{% load static %}
+<div class='cart-container'>
+  <h3 class='cart-container-title'> Task importance </h3>
+  <div class='cart-info'>
+    <div class='cart-info-color-block'>
+      <div class='black-block'></div>
+      <div class='blue-block'></div>
+      <div class='yellow-block'></div>
+      <div class='orange-block'></div>
+      <div class='red-block'></div>
+    </div>
+    <div class='cart-info-content-text'>
+      <p> very important </p>
+      <p>Not important</p>
+    </div>
+  </div>
+  <div class='completed-task-color'>
+    <div class='green-block'>
+      <img src={% static "icons/check_circle.svg" %} style='width: 100%;'  alt="">
+    </div>
+    <div class='cart-info-content-text'>done</div>
+  </div>
+</div>

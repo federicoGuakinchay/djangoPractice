@@ -1,0 +1,144 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href={% static "task_list.css" %}>
+  <link rel="stylesheet" href={% static "importance.css" %}>
+  <title>Task App</title>
+</head>
+<body>
+  <h1>{{order}}</h1>
+  {% comment " this view is simple because it isn't a practice of front-end " %}
+  this view is simple because it isn't a practice of front-end
+  {% endcomment %}
+  <header>
+    <h1> Task APP </h1>
+    <h5> A simple API to manage tasks </h5>
+    <div class='header_list'>
+      <h2>Task List</h2>
+      <a href={% url "task_form" %} class='btn '> new task </a>
+    </div>
+    <div class='filter-container'>
+      <h3 class='filter-container-title'>filters</h3>
+      <select class='btn' id='order_filter'> oder by 
+        {% if order == "importance" %}
+          
+          <option value="importance">importance</option>
+          <option value="limit_date">limit date</option>
+          <option value="task_title">Task Title</option>
+
+        {% elif order == "limit_date" %}
+          
+          <option value="limit_date">limit date</option>
+          <option value="importance">importance</option>
+          <option value="task_title">Task Title</option>
+        
+        {% else %}
+          <option value="task_title">Task Title</option>
+          <option value="importance">importance</option>
+          <option value="limit_date">limit date</option>
+        {% endif %}
+      </select>
+      <select class='btn' id='task_filter'> task 
+        {% if  taskfilter == "all" %}
+          
+          <option value='all' >          all        </option>
+          <option value='complete' >     complete   </option>
+          <option value='incomplete' >   incomplete </option>
+        
+        {% elif taskfilter == "complete" %}
+          
+          <option value='complete' >     complete   </option>
+          <option value='incomplete' >   incomplete </option>
+          <option value='all' >          all        </option>
+        
+        {% else %}
+          <option value='incomplete' >   incomplete </option>
+          <option value='all' >          all        </option>
+          <option value='complete' >     complete   </option>
+        
+        {% endif %}
+      </select>
+      <a href={% url "task_form"%} class='btn apply_filter'> apply filters </a>
+      <h1 id='h1'> </h1>
+      <script>
+        let new_url = '/list/'
+        let order_filter='importance/'
+        let task_filter = 'all/'
+        document.querySelector('#order_filter').addEventListener('change',()=>{
+          new_url = '/list/'
+          order_filter = document.querySelector('#order_filter').value + '/'
+          new_url = new_url + order_filter  + task_filter
+          document.querySelector('.apply_filter').href=new_url
+        })
+        document.querySelector('#task_filter').addEventListener('change',()=>{
+          new_url = '/list/'
+          task_filter = document.querySelector('#task_filter').value +'/'
+          new_url = new_url + order_filter + task_filter
+          document.querySelector('.apply_filter').href=new_url
+        })
+        new_url = new_url + order_filter + task_filter
+        document.querySelector('.apply_filter').href=new_url
+      </script>
+    </div>
+  </header>
+  <div class='main-container'>
+  <main>
+  <div class='grid'>
+  {% for task in tasks %}
+    <div class="{{task.iportance_task}} {{task.completed}} task-card">
+      <div class='title-task'>
+        {% if task.completed  %}
+          <img class='card-text-color' src={% static "icons/check_circle.svg" %} alt="the task is completed">
+        {% else %}
+          <img  class='card-text-color' src={% static "icons/warning.svg" %} alt="need to complete this task">
+        {% endif %}
+        <h3  class='card-text-color' >
+          {{task.title}}
+        </h3>
+      </div>
+      <div class='time-task-content'>
+        <div  class='card-text-color' >
+          create : {{task.create_task|date:"d/m/Y"}}
+        </div>
+        {% if task.completed %}
+        <div  class='card-text-color' >
+          completed : {{task.completation_date|date:"d/m/Y"}}
+        </div>
+        {% else %}
+          {% if task.limit_date %}
+          <div  class='card-text-color' >
+            Limit : {{task.limit_date|date:"d/m/Y"}}
+          </div>
+          {% else %}
+          <div  class='card-text-color' >
+            Limit :  --/--/----
+          </div>
+          {% endif %}
+        {% endif %}
+      </div>
+      <div class='task-user card-text-color'>
+        {{task.created_by}}
+      </div>
+      <div class='btn-content'>
+        {% if not task.completed %}
+        <a href="{% url 'task_complete' task.id %}" class='btn complete'> <img src={% static "icons/check.svg" %} alt="mark task as completed"> </a> 
+        {% else %}
+        <a href="{% url 'task_incomplete' task.id %}" class='btn delete '>  <img src={% static "icons/menos.svg" %} alt="remove task"> </a>
+        {% endif %}
+        <a href="{% url 'task_update' task.id %}" class='btn'> <img src={% static "icons/edit.svg" %} alt="edit task">  </a>
+        <a href="{% url 'task_delete' task.id %}" class='btn delete' > <img src={% static "icons/delete.svg" %} alt="delete"> </a> 
+      </div>
+    </div>
+  {% endfor %}
+  </div>
+  <div ><a href={% url "task_form" %} class='btn end-btn'> new task </a></div>
+  </main>
+  <aside>
+  {% include "importance.html" %}
+  </aside>  
+  </div>
+</body>
+</html>

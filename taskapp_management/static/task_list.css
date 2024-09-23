@@ -1,0 +1,142 @@
+*{
+  color: #aaa;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+body{
+  background-color: #111;
+}
+
+header{
+  width: 100%;
+}
+h1{
+  color: #fff;
+  text-align: center;
+}
+h5{
+  text-align: center;
+}
+h2{
+  display: block;
+  margin: 40px;
+  color: #fff;
+}
+.header_list{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.filter-container{
+  display: flex;
+  justify-content: center;
+}
+.grid{
+  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 352px));
+  grid-template-rows: repeat(auto-fill, minmax(300px, 1fr));
+  grid-gap: 22px;
+  justify-content: center;
+  align-items: center;
+}
+main{
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap:20px;
+}
+.main-container{
+  display: flex;
+}
+aside{
+  position: sticky;
+  height: 100%;
+  top: 10px;
+}
+
+.btn{
+  box-sizing: content-box;
+  text-decoration: none;
+  border-radius: 20px;
+  background: #222;
+  padding: 15px;
+  margin: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  &:hover{
+    background: #333;
+    color: #ccc;
+  }
+  &:active{
+    background: #444;
+    color: #fff;
+  }
+}
+.btn-content{
+  display: flex;
+}
+.task-card{
+  padding: 20px;
+  border-radius: 25px;
+  transition: box-shadow 1s;
+  &:hover{
+    box-shadow: 5px 5px 20px 0 #000;
+  }
+}
+.black{
+  background-color: #111;
+}
+.blue{
+  background-color: #006;
+}
+.yellow{
+  background-color: #992;
+}
+.orange{
+  background-color: #a40;
+}
+.red{
+  background-color: #700;
+}
+
+.main-container{
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+  justify-content: flex-start;
+}
+
+.True{
+  background-color: #070;
+
+}
+.title-task{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px ;
+}
+
+.time-task-content{
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0px 20px;
+}
+.btn-content{
+  height: 64px;
+}
+.task-user{
+  margin: 20px;
+}
+.card-text-color{
+  color: #fff;
+}
+.delete:hover{ background-color: #a00;}
+.complete:hover{ background-color: #0a0; }
+.btn-end{
+  width: 50%;
+  margin: auto;
+}

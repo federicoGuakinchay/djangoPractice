@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href={% static "task_form.css" %}>
+  <link rel="stylesheet" href={% static "importance.css" %}>
+  <title>Task form</title>
+</head>
+<body>
+  <header>
+    {% comment " this view is simple because it isn't a practice of front-end " %}
+    this view is simple because it isn't a practice of front-end
+    {% endcomment %}
+    <h1>  crate task  </h1>
+    <div class='header_list'>
+      <h2>Task form </h2>
+      <a href={% url 'task_list' %} class='btn'> return  </a>
+    </div>
+  </header>
+  <main>
+    <form actiom = {% url "task_list" %} method='POST'>
+      {% csrf_token %}
+      {{form.as_p}}
+      <div class ='end-form-btn'>
+        <input class='btn' type="submit" value="submit">
+        {% if task_id %}
+          <a class='btn delete' href="{% url 'task_delete' task_id %}">delete</a>
+        {% endif %}
+      </div>
+    </form>
+  </main>
+  <aside>
+    {% include "importance.html" %}
+  </aside>  
+</body>
+</html>
