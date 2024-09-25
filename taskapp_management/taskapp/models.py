@@ -13,14 +13,14 @@ class  Importance_task (models.Model):
   
 
 class Task (models.Model):
-  title = models.CharField(max_length=50,null=False)
-  description = models.TextField(null=False)
-  created_by = models.ForeignKey(User, on_delete=models.CASCADE)
-  iportance_task = models.ForeignKey(Importance_task, on_delete=models.CASCADE) 
-  create_task  = models.DateField(null=True, blank=False, default=timezone.now)
-  completation_date = models.DateField(null=True, blank=True)
+  title = models.CharField(max_length=50 , null=False)
+  description = models.TextField(blank=True)
+  created_by = models.ForeignKey(User , on_delete=models.CASCADE , null=False)
+  iportance_task = models.ForeignKey(Importance_task , on_delete=models.CASCADE , null=False)
+  create_task  = models.DateField(null=True , blank=False , default=timezone.now)
+  completation_date = models.DateField(null=True , blank=True)
   completed = models.BooleanField(default=False)  
-  limit_date = models.DateField(null=True,blank=True)
+  limit_date = models.DateField(null=True , blank=True)
 
   def clean(self):
     if self.limit_date is not None and self.limit_date < date.today():
