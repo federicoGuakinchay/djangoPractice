@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}user : {{user.username}}{% endblock title %}
+
+{% block content %}
+<h1>this page have to contain the info of the user </h1>
+<h2>user name :  {{user.username}}</h2>
+{% if user.email %}
+<p> email : {{ user.email }}</p>
+{% else %}
+<p> email :  null</p>
+{% endif %}
+<h3> user status </h3>
+{% if user.is_superuser %}
+<p>this user have <b style='color: #00f;'>super_user</b> permission</p>
+{% elif user.is_staff %}
+<p>this user have  <b style='color: #00f;'>staff</b> permission</p>
+{% else %}
+<p>this user dont have any permission</p>
+{% endif %}
+{% endblock content %}
+

@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block title %}users list{% endblock title %}
+
+{% block content %}
+<style> 
+  @media only screen and (max-width: 750px) {
+    .email-td-field{
+      display: none;
+    }
+  }
+</style>
+<div class='employees-list'>
+<h1> list of users </h1>
+<form method="GET" action="{% url 'users:user_list' %}" style='margin-bottom: 25px;'>
+  <input type="text" name="q" placeholder="Search users..." value="{{ request.GET.q }}">
+  <button type="submit">Search</button>
+</form>
+<table>
+  <tr>
+    <td>name</td>
+    <td>id</td>
+    <td> user-type </td>
+    <td class='email-td-field'>email</td>
+    <td></td>
+  </tr>
+{% for user in users %}
+{% if user != request.user%}
+  <tr>
+    <td> {{user.username}} </td>
+    <td> {{user.id}} </td>
+    {% if user.is_superuser %}
+    <td> super </td>
+    {% elif user.is_staff %}
+    <td> staff </td>
+    {% else %}
+    <td> normal </td>
+    {% endif %}
+    {% if user.email %}
+    <td class='email-td-field' > {{ user.email }} </td>
+    {% else %}
+    <td class='email-td-field'> ---- </td>
+    {% endif %}
+    <td><a href="{% url 'users:user_detail' user.id %}"> <button>view</button> </a></td>
+  </tr>
+  {% endif %}
+  {% endfor %}
+</table>
+{%if not users %}
+  <h1 style='margin: 12% auto;'> don't found users </h1>
+{%endif%}
+</div>
+{% endblock content %}

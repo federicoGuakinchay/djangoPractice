@@ -1,0 +1,68 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}My Django App{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+</head>
+<body>
+    <!-- Navigation Bar  -->
+    <nav>
+        <ul>
+            <li> <a href="{% url 'users:home' %}"> App </a> </li>
+            <li class='none-navbar'>  </li>
+            {% if user.is_authenticated %}
+                {% if request.resolver_match.url_name != 'profile' %}
+                    <li> <a href="{% url 'users:profile' %}">My_Profile</a> </li>
+                {% endif %}
+                <li class='logout-link'> <a href="{% url 'users:logout' %}" >Logout</a> </li>
+                {% if request.user.is_superuser %}
+                    <li> <a href="{% url 'admin:index' %}"> Django_Admin </a> </li>
+                {% endif %}
+                {% if request.user.is_staff %}
+                    {% if request.resolver_match.url_name != 'admin_view' %}
+                        <li> <a href="{% url 'users:admin_view' %}">Staff_Site</a> </li>
+                    {% endif %}
+                {% endif %}
+                    {% if request.resolver_match.url_name != 'user_list' %}
+                        <li> <a href="{% url 'users:user_list' %}"> Search_Users </a> </li>
+                    {% endif %}
+            {% else %}
+                {% if request.resolver_match.url_name != 'login' %}
+                    <li class='login-link'> <a href="{% url 'users:login' %}">Login</a> </li>
+                {% endif %}
+                {% if request.resolver_match.url_name != 'register' %}
+                    <li class='register-link'> <a href="{% url 'users:register' %}">Register</a> </li>
+                {% endif %}
+            {% endif %}
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <div>
+            {% block content %}
+            <!-- Page-specific content will be rendered here -->
+            {% endblock %}
+        </div>
+        {% if messages %}
+            <ul>
+            {% for message in messages %}
+                <li class="{{ message.tags }}">{{ message }}</li>
+            {% endfor %}
+            </ul>
+        {% endif %}
+    </main>
+    <!-- Footer -->
+    <footer>
+        <div>
+            <span>&copy; 2024 My Django App. All rights reserved.</span>
+            <span>&copy; Made  by Federico Guakinchay</span>
+        </div>
+
+        <a href={% url "about_me" %}> <span>about me </span> </a>
+    </footer>
+</body>
+</html>

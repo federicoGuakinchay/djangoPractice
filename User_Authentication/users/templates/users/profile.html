@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}my profile{% endblock title %}
+
+{% block content %}
+<p>Welcome, {{ request.user.username }}!</p>
+<p>this page have to contain my info </p>
+{% if request.user.is_superuser %}
+  <p>You have super user  permision !</p>
+{% elif request.user.is_staff %}
+  <p>You are a staff member!</p>
+{% else %}
+  <p>You are a user!</p>
+{% endif %}
+<p> your first name : {{request.user.first_name}}</p>
+<p> your last name  : {{request.user.last_name}}</p>
+<p> your email      : -----------</p>
+{% endblock content %}
+

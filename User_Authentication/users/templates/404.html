@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %}user : {{user.username}}{% endblock title %}
+
+{% block content %}
+    <h1>404 - Page Not Found</h1>
+    <p>Oops! The page you are looking for does not exist/ in my django app. </p>
+    <button onclick="window.history.back()" >Return</button>
+    <a href="{% url 'users:login' %}?next={{ request.path }}">
+      <button>Return to login</button>
+    </a>
+{% endblock content %}

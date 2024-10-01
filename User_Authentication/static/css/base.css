@@ -1,0 +1,158 @@
+
+body{
+  display:flex;
+  background-color: #000;
+  color: #e4e4e4;
+  font-family: 'Courier New', Courier, monospace;
+  flex-direction: column;
+  padding: 15px;
+  height: clamp(100vh,100vh,500vh);
+  box-sizing: border-box;
+  width:100% ;
+  margin: 0 auto;
+}
+
+/* navbar-style */
+
+nav {
+  background-color: #000044;
+  border-radius:20px 20px 0 0 ;
+  ul{
+    margin: 0;
+    padding: 25px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+    li{
+      list-style: none;
+      a{
+        color: #fff;
+        text-decoration: none;
+        &:hover{
+          color: #00f;
+        }
+        &:active{
+          color: #55f;
+        }
+      }
+    }
+  }
+  .register-link{
+    order:12
+  }
+  .login-link,.logout-link{
+    order: 11;
+  }
+  .none-navbar{
+    order: 10;
+    flex-grow: 1;
+  }
+}
+
+
+/* main-style */
+
+main{
+  background-color: #111;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  div{
+    text-align: center;
+    width: 100%;
+  }
+
+}
+
+/* footer-style */
+
+footer{
+  background-color: #111;
+  padding: 20px;
+  text-align: center;
+  color: #a4a4a4;
+  border-radius: 0 0 20px 20px;
+  div { 
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+    justify-content: center;
+    span{
+      margin: 10px 0;
+      text-wrap: pretty;
+    }
+  }
+
+}
+/* objects  styles */
+
+/*--- button ---*/
+
+button{
+  background-color: #222;
+  color: #a4a4a4;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 10px;
+  &:hover{
+    background-color: #333;
+  }
+  &:active{
+    background-color: #444;
+  }
+}
+
+/*--- input ---*/
+
+input{
+  background-color: #222222;
+  border: none;
+  color: #99f;
+  padding: 10px;
+  border-radius: 50px;
+}
+
+/*--- links ---*/
+
+footer, main{
+  a{
+    color: #fff;
+    text-decoration: none;
+    &:visited{color: #FF2222;}
+    &:hover{color: #ff5555;}
+    &:active{color: #F00;}
+  }
+}
+
+/* form style */
+
+.register-form{
+  width: clamp(200px,75%, 500px);
+  margin: auto;
+  p{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    label{
+      text-wrap: pretty;
+      width: 250px;
+    }
+    input{ flex-grow: 1; }
+  }
+}
+
+.employees-list{
+  ul{
+    list-style: none;
+    margin: 0;
+    padding: 20px;
+  }
+}
+/* employee  table */
+table{ width: 100%;}
+
+@media only screen and (min-width: 800px) {
+  body{width: 80%;}
+}

@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block title %}Login{% endblock title %}
+
+{% block content %}
+<h2>Login</h2>
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Login</button>
+</form>
+<br>
+<a href="{% url 'password_reset' %}"> you forgot your password?</a><br>
+<div class='card-content'>
+    <h1> users to test </h1>
+    <div class='card'>
+        <p>username: Alan</p>
+        <p>status  : super_user</p>
+        <p>password: J8k@3Fp!zB4w</p>
+    </div>
+    <div class='card'>
+        <p>username: Mark</p>
+        <p>status  : staff_user</p>
+        <p>password: Q7$YpL9xnV2</p>
+    </div>
+    <div class='card'>
+        <p>username: Steve</p>
+        <p>status  : normal_user</p>
+        <p>password: A3s#D8eW!t7z</p>
+    </div>
+</div>
+<style>
+    .card-content{
+        display: flex;
+        margin: 20px;
+        box-sizing: border-box;
+        flex-wrap: wrap;
+        width: fit-content;
+        justify-content: center;
+        gap: 10px;
+        h1{
+            width: 100%;
+        }
+        .card{
+            text-align: left;
+            background-color: #333;
+            width: 220px;
+            border-radius: 25px;
+            padding: 10px;
+            &:hover{background-color: #444;}
+        }
+    }
+</style>
+{% endblock content %}
